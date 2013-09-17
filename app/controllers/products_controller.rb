@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   include ProductsHelper
   
+  before_filter :validate_url, :only => :create
+  
   # GET /products
   # GET /products.json
   def index
@@ -26,6 +28,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
+    @notice = params['notice']
     @product = Product.new
 
     respond_to do |format|
@@ -42,9 +45,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-
+    @product = Product.new
     getProduct(params['product_url'])
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -82,6 +84,31 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def validate_url
+    if params['product_url'].blank?
+      msg = "can not be blank!"
+    elsif !( uri?(params['product_url']))
+      msg = "invalid!"
+    end
+
+    unless msg.blank?
+      @product = Product.new
+      @product.errors.add :product_url, msg
+      render action: "new"
+    end
+  end
+  
+  def uri?(str)
+    uri = URI.parse(str)
+    %w( http https ).include?(uri.scheme)
+  rescue URI::BadURIError
+    false
+  rescue URI::InvalidURIError
+    false
   end
   
 end
