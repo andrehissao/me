@@ -13,11 +13,13 @@
   </div>
 <% end %>
 
+<div class="register">
 <%= form_tag("/products", method: "create") do %>
   <%= label_tag :product_url, "Product URL:" %>
   <%= text_field_tag :product_url, nil, :size=>200 %>
 	<br />
   <%= submit_tag("Get product") %>
 <% end %>
-
+</div>
+<br/>
 <%= link_to 'Back', products_path %>

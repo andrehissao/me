@@ -11,25 +11,26 @@
     </div>
   <% end %>
 
-	<%= f.file_field :image %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="register">
+		<p><%= f.file_field :image %></p>
+	  <div class="field">
+	    <%= f.label :name %><br />
+	    <%= f.text_field :name %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :code %><br />
+	    <%= f.text_field :code %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :price %><br />
+	    <%= f.text_field :price %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :description %><br />
+	    <%= f.text_area :description %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	</div>
 <% end %>
