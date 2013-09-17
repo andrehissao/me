@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-
 gem 'sqlite3'
-
+gem 'nokogiri'
 gem 'jquery-rails'
 
 group :development do
@@ -12,4 +11,6 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'fakeweb'
+  gem 'vcr'
 end

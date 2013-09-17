@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include ProductsHelper
   # GET /products
   # GET /products.json
   def index
@@ -40,7 +41,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+
+    getProduct(params['product_url'])
 
     respond_to do |format|
       if @product.save
@@ -80,4 +82,5 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end
