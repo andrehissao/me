@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 module ProductsHelper
+  
     def getProduct(url)
     @product = Product.new
     doc = Nokogiri::HTML(open(URI(url)))
