@@ -26,6 +26,13 @@ module ProductsHelper
     doc.css('.productDescription').each do |v|
       @product.description = v.content
     end
+    
+    #Image
+    doc.css('#botaoZoom').each do |v|
+      rel = v.attributes['rel'].value.gsub(/\r/,'').gsub(/\n/,'')
+      host = URI(url).host
+      @product.image_remote_url = "http://#{host}#{rel}"
+    end
 
   end
 end
